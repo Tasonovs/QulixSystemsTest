@@ -1,0 +1,57 @@
+﻿@model IEnumerable<QulixSystemsTest1.Models.Company>
+
+@{
+    ViewData["Title"] = "Компании";
+}
+
+<h1>Список компаний</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationalForm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                <a asp-action="AddOrEdit">➕ Добавить</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationalForm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                <a asp-action="AddOrEdit" asp-route-id="@item.Id"> 🖊 </a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"> 🗑 </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Count() == 0)
+{
+    <p>Пока здесь нет ни одной записи. Хотите <a asp-action="AddOrEdit" asp-route-id="0">добавить</a>?</p>
+}
