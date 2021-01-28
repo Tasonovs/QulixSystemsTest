@@ -32,6 +32,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="EmploymentDate" class="control-label"></label>
+                @*Хотелоcь бы сделать это компактнее, но встречаюсь с проблемой:
+                    либо при переходе на форму сбрасывается существующее значение даты,
+                    либо она по умолчанию создатся как '01.01.0001'*@
                 @{ if (Model.EmploymentDate.Ticks != 0)
                     {<input asp-for="EmploymentDate" class="form-control" />}
                     else
